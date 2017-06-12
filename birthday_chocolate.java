@@ -8,6 +8,20 @@ public class Solution {
 
     static int solve(int n, int[] s, int d, int m){
         // Complete this function
+        int sum;
+        int count = 0;
+        for(int i=0; i<=(n-m);i++){
+            sum=0;
+            for(int j=0;j < m;j++){
+                sum += s[i+j];
+            }
+            if(sum == d){
+                count++;
+            }
+            
+        }
+        return count;
+        
     }
 
     public static void main(String[] args) {
