@@ -17,11 +17,9 @@ public class Solution {
             }
             if(sum == d){
                 count++;
-            }
-            
+            }            
         }
-        return count;
-        
+        return count;        
     }
 
     public static void main(String[] args) {
