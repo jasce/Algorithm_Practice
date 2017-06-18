@@ -19,39 +19,40 @@ public class Solution {
             alice[alice_i] = in.nextInt();
         }
         // your code goes here+       
-        Arrays.sort(scores);
-        int rank = 1;
-        int f = 0;
-        
-        for(int i=0;i<alice.length;i++){
-            f=0;
-            if(alice[i] >= scores[scores.length-1]){
-               System.out.println(1);
-                f = 1;
+        ArrayList<Integer> al = new ArrayList<Integer>();
+        al.add(0,scores[0]);
+        for(int i=1;i<scores.length;i++){            
+            if(scores[i-1] !=scores[i]){
+                al.add(scores[i]);                
             }
-            else{
-                rank=1;
-            }
-            for(int j=scores.length-1;j>0;j--){             
-                
-                if(scores[j-1] != scores[j] && scores[j-1] > alice[i] && f==0){
-                    rank++;
-                }
-                 if(scores[j-1] != scores[j] && scores[j-1] <= alice[i] && f==0){
-                    System.out.println(++rank);
-                    break;
-                }
-                if(scores[j-1] == alice[i] && f==0){
-                    System.out.println(rank);
-                    break;
-                }
-                if(j == 1 && f==0){
-                    System.out.println(++rank);
-                    break;
-                }
-            }
+            else
+                continue;       
             
         }
+        int index = al.size()-1;
+        for(int i=0; i<alice.length;i++){
+            for( int j=index; j>=0;j--){
+                
+                if(alice[i] >= al.get(0)){
+                    System.out.println(1);
+                    break;
+                }
+                if(alice[i] < al.get(j))
+                {
+                    System.out.println(j+2);
+                    index = j;
+                    break;
+                }
+                else if(alice[i]==al.get(j))
+                {
+                    System.out.println(j+1);
+                    index =j;
+                    break;
+                }
+                
+            }
+        }       
+
         
     }
 }
