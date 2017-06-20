@@ -13,10 +13,7 @@ public class Solution {
         for(int a_i=0; a_i < n; a_i++){
             a[a_i] = in.nextInt();
         }
-        int min_first = 1000000000;
-        int min_second = 100000000;
-        int last_el;
-        int index_first = 0;
+        
         // your code goes here
         int min = 100000000;
         int last;             
