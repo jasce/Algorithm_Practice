@@ -66,13 +66,45 @@ class LinkedList {
     }
 
     //TODO
-    reverse() {}
+    reverse() {
+        let current = this.head['next'];
+        let previous = null;
+        while(current !== null) {
+            let next = current['next'];
+            current['next'] = previous;
+            previous = current;
+            current = next;
+        }
+        this.head['next'] = previous;
+        return true;
+    }
 
     //TODO
-    swap() {}
+    swap(pos1, pos2) {
+        let counter = 0;
+        let current = this.head;
+        let firstNode;
+        while(current['next'] !== null) {
+            if(current === pos1) {
+                firstNode = current;
+            } else if(current === pos2) {
+                let temp;
+                temp = firstNode['data'];
+                firstNode['data'] = current['data'];
+                current['data'] = temp;
+            }
+            counter++;
+            current = current['next'];
+        }
+    }
 
     //TODO
-    isEmpty() {}
+    isEmpty() {
+        if(!this.head['next']) {
+            return true;
+        }
+        return false;
+    }
 
     display() {
         let current = this.head['next'];
@@ -121,4 +153,16 @@ linkedList1.display();
 console.log("=============== return position (0 indexed) ============ ");
 console.log( linkedList1.returnPosition(9) );
 //linkedList1.display();
+
+console.log(" =============  before reversing the list =================");
+linkedList1.display();
+
+
+linkedList1.reverse();
+console.log(" =============  after reversing the list =================");
+linkedList1.display();
+
+
+console.log("is empty",  linkedList1.isEmpty() );
+
 
